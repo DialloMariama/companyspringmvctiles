@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- LAYOUTS -->
+    <definition name="baseLayout" template="/WEB-INF/jsp/baseLayout.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="css" value=""/>
+    </definition>
+
+    <definition name="publicBaseLayout" template="/WEB-INF/jsp/publicBaseLayout.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+    </definition>
+
+    <!-- LAYOUTS -->
+
+    <!-- DEFINITIONS URL SECURISEES-->
+
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Login page" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/login.jsp"/>
+        <put-attribute name="css" value="resources/public/css/pages/login.css"/>
+    </definition>
+
+    <definition name="welcome" extends="baseLayout">
+        <put-attribute name="title" value="Welcome page" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/welcome.jsp"/>
+        <put-attribute name="css" value="resources/public/css/pages/login.css"/>
+    </definition>
+
+    <definition name="products" extends="baseLayout">
+        <put-attribute name="title" value="Produits" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/products.jsp"/>
+    </definition>
+
+    <definition name="purchases" extends="baseLayout">
+        <put-attribute name="title" value="Purchases" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/purchases.jsp"/>
+
+    </definition>
+
+    <definition name="sales" extends="baseLayout">
+        <put-attribute name="title" value="Sales" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/sales.jsp"/>
+    </definition>
+
+    <definition name="clients" extends="baseLayout">
+        <put-attribute name="title" value="Clients" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/clients.jsp"/>
+    </definition>
+
+    <!-- FIN DEFINITIONS URL SECURISEES -->
+
+    <!-- DEFINITIONS URL NON SECURISES-->
+
+    <definition name="paniers" extends="publicBaseLayout">
+        <put-attribute name="title" value="Panier page" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/paniers.jsp"/>
+    </definition>
+
+    <definition name="commandes" extends="publicBaseLayout">
+        <put-attribute name="title" value="Commandes page" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/commandes.jsp"/>
+    </definition>
+
+    <!-- DEFINITIONS URL NON SECURISES -->
+</tiles-definitions>
