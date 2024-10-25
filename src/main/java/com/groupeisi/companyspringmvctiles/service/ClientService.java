@@ -20,8 +20,6 @@ public class ClientService implements IClientService {
 
     @Override
     public Optional<List<ClientDto>> findAll() {
-        logger.info("ClientService - Tentative de liste des clients");
-
         List<ClientEntity> clientEntities = clientDao.list(new ClientEntity());
         List<ClientDto> clientDtos = ClientMapper.toListClientDto(clientEntities);
         return Optional.of(clientDtos);
@@ -29,20 +27,14 @@ public class ClientService implements IClientService {
 
     @Override
     public boolean save(ClientDto clientDto) {
-        logger.info("ClientService - Tentative d'enregistrement d'un client : {}", clientDto);
+        logger.info("Enregistrement d'un client : {}", clientDto);
         ClientEntity clientEntity = ClientMapper.toClientEntity(clientDto);
         return clientDao.save(clientEntity);
     }
 
     @Override
-    public Optional<ClientDto> findByEmail(String email) {
-        Optional<ClientEntity> clientEntity = clientDao.findByEmail(email);
-        return clientEntity.map(ClientMapper::toClientDto);
-    }
-
-    @Override
     public boolean update(ClientDto clientDto) {
-        logger.info("ClientService - Tentative de modification d'un client : {}", clientDto);
+        logger.info("Modification des informations d'un client : {}", clientDto);
         ClientEntity clientEntity = ClientMapper.toClientEntity(clientDto);
         return clientDao.update(clientEntity);
     }

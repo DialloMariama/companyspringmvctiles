@@ -11,14 +11,12 @@
         <put-attribute name="css" value=""/>
     </definition>
 
-    <definition name="publicBaseLayout" template="/WEB-INF/jsp/publicBaseLayout.jsp">
+    <definition name="baseLayoutPublic" template="/WEB-INF/jsp/baseLayoutPublic.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>
     </definition>
 
     <!-- LAYOUTS -->
-
-    <!-- DEFINITIONS URL SECURISEES-->
 
     <definition name="login" extends="baseLayout">
         <put-attribute name="title" value="Login page" type="string"/>
@@ -53,17 +51,14 @@
         <put-attribute name="content" value="/WEB-INF/jsp/pages/clients.jsp"/>
     </definition>
 
-    <!-- FIN DEFINITIONS URL SECURISEES -->
 
-    <!-- DEFINITIONS URL NON SECURISES-->
-
-    <definition name="paniers" extends="publicBaseLayout">
-        <put-attribute name="title" value="Panier page" type="string"/>
+    <definition name="paniers" extends="baseLayoutPublic">
+        <put-attribute name="title" value="Panier" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/front/paniers.jsp"/>
     </definition>
 
-    <definition name="commandes" extends="publicBaseLayout">
-        <put-attribute name="title" value="Commandes page" type="string"/>
+    <definition name="commandes" extends="baseLayoutPublic">
+        <put-attribute name="title" value="Commande" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/front/commandes.jsp"/>
     </definition>
 

@@ -9,7 +9,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Liste des clients</h5>
+                        <h5 class="card-title">LISTE DES CLIENTS</h5>
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
@@ -38,7 +38,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Ajout d'un client</h5>
+                        <h5 class="card-title">Ajout Client</h5>
                         <form action="clients" method="post">
                             <div class="mb-3">
                                 <label for="inputFirstName" class="form-label">Prénom</label>

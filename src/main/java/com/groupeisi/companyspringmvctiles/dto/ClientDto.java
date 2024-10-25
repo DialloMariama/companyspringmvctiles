@@ -89,5 +89,6 @@ public class ClientDto {
     public void setPaniers(List<PanierDto> paniers) {
         this.paniers = paniers;
     }
+
 }
 

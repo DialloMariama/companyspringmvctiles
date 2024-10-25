@@ -14,9 +14,7 @@ public class ClientDao extends RepositoryImpl<ClientEntity> implements IClientDa
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<ClientEntity> cr = cb.createQuery(ClientEntity.class);
         Root<ClientEntity> client = cr.from(ClientEntity.class);
-
         Predicate predicateEmail = cb.equal(client.get("email"), email);
-
         cr.select(client).where(predicateEmail);
 
         try {

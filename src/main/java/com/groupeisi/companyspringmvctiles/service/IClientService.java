@@ -8,6 +8,5 @@ import java.util.Optional;
 public interface IClientService {
     Optional<List<ClientDto>> findAll();
     boolean save(ClientDto clientDto);
-    Optional<ClientDto> findByEmail(String email);
     boolean update(ClientDto clientDto);
 }

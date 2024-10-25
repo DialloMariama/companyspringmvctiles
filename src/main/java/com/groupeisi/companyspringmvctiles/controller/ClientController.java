@@ -26,20 +26,18 @@ public class ClientController {
     }
 
     @GetMapping("/clients")
-    public String showClients(Model model) {
-        logger.info("ClientController - Méthode GET appelée pour afficher les clients");
+    public String GetClients(Model model) {
+        logger.info("Appel de la Méthode GET ");
 
         try {
             Optional<List<ClientDto>> clients = clientService.findAll();
             if (clients.isPresent()) {
-                logger.info("ClientController - Liste des clients récupérée avec succès");
                 model.addAttribute("clientList", clients.get());
             } else {
-                logger.info("ClientController - Aucun client trouvé");
                 model.addAttribute("clientList", new ArrayList<ClientDto>());
             }
         } catch (Exception e) {
-            logger.error("ClientController - Erreur lors de la récupération des clients", e);
+            logger.error("Erreur lors de la récupération des clients", e);
         }
 
         return "clients";
@@ -53,10 +51,6 @@ public class ClientController {
             @RequestParam(value = "tel", required = false) String tel,
             @RequestParam(value = "address", required = false) String address) {
 
-        logger.info("ClientController - Méthode POST appelée pour enregistrer un client");
-        logger.debug("ClientController - Paramètres reçus : firstName={}, lastName={}, email={}, tel={}, address={}",
-                firstName, lastName, email, tel, address);
-
         ClientDto clientDto = new ClientDto();
         clientDto.setFirstName(firstName);
         clientDto.setLastName(lastName);
@@ -67,11 +61,9 @@ public class ClientController {
 
         try {
             clientService.save(clientDto);
-            logger.info("ClientController - Client enregistré avec succès : {}", email);
 
         } catch (RuntimeException e) {
-            logger.error("ClientController - Erreur lors de l'enregistrement du client : {}", e.getMessage());
-            return "redirect:/clients?error";
+            logger.error("Erreur lors de l'enregistrement du client : {}", e.getMessage());
         }
 
         return "redirect:clients";
