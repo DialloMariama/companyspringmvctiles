@@ -47,6 +47,7 @@ public class PanierMapper {
         panierDto.setProductRefs(productRefs);
 
         return panierDto;
+
     }
 
     public static List<PanierDto> toListPanierDto(List<PanierEntity> panierEntities) {

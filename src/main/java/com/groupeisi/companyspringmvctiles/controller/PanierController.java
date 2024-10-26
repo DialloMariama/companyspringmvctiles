@@ -27,28 +27,19 @@ public class PanierController {
     private final IProductService productService = new ProductService();
 
     @GetMapping("/public/paniers")
-    public String showPaniers(Model model) {
-        logger.info("Affichage des paniers");
-
+    public String GetPaniers(Model model) {
         try {
             Optional<List<PanierDto>> paniers = panierService.findAll();
             model.addAttribute("panierList", paniers.orElseThrow());
 
-
             Optional<List<ClientDto>> clientList = clientService.findAll();
             model.addAttribute("clientList", clientList);
-
-            System.out.println("clientList" + clientList);
-
 
             Optional<List<ProductDto>> productList = productService.findAll();
             model.addAttribute("productList", productList);
 
-            System.out.println("productList" + productList);
-
         } catch (Exception e) {
-            logger.error("Erreur lors de la récupération des paniers, clients ou produits", e);
-            model.addAttribute("errorMessage", "Erreur lors de la récupération des données.");
+            logger.error("Erreur lors de la récupération des paniers", e);
         }
 
         return "paniers";
@@ -58,17 +49,15 @@ public class PanierController {
     public String savePanier(@RequestParam("clientId") Long clientId,
                              @RequestParam("productRefs") List<String> productRefs,
                              Model model) {
-        logger.info("Tentative d'enregistrement d'un panier pour le client : {}", clientId);
+        logger.info("Enregistrement d'un panier par le client : {}", clientId);
 
         if (clientId == null) {
             logger.error("L'ID du client est nul");
-            model.addAttribute("errorMessage", "ID du client requis.");
             return "redirect:/public/paniers";
         }
 
         if (productRefs == null || productRefs.isEmpty()) {
-            logger.error("Liste des produits vide ou nulle");
-            model.addAttribute("errorMessage", "Veuillez sélectionner au moins un produit.");
+            logger.error("Liste des produits vide");
             return "redirect:/public/paniers";
         }
 
@@ -83,7 +72,7 @@ public class PanierController {
                 return "redirect:/public/paniers";
             }
 
-            logger.info("Panier enregistré avec succès pour le client : {}", clientId);
+            logger.info("Panier enregistré avec succès : {}", clientId);
         } catch (Exception e) {
             logger.error("Erreur lors de l'enregistrement du panier", e);
             return "redirect:/public/paniers";

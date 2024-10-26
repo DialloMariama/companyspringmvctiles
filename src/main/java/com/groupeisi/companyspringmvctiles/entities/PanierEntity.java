@@ -70,4 +70,5 @@ public class PanierEntity implements Serializable {
     public void setProducts(List<ProductEntity> products) {
         this.products = products;
     }
+
 }

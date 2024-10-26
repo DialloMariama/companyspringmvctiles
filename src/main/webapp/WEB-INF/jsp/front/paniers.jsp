@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <body>
-<h2>Liste des Paniers</h2>
+<h2>Liste Paniers</h2>
 
 <table border="1">
     <thead>
@@ -32,7 +32,7 @@
     </tbody>
 </table>
 
-    <h3>Ajouter un produit au panier</h3>
+    <h3>Ajouter un produit</h3>
 
     <label for="client">Sélectionner le Client :</label>
     <form:select path="clientId" id="client">

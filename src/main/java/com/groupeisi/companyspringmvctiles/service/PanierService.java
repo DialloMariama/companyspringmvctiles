@@ -33,18 +33,16 @@ public class PanierService implements IPanierService {
 
     @Override
     public boolean save(PanierDto panierDto) {
-        logger.info("Tentative d'enregistrement du panier : {}", panierDto);
-
         try {
             Optional<ClientEntity> clientOpt = clientDao.findById(panierDto.getClientId());
             if (clientOpt.isEmpty()) {
-                throw new EntityNotFoundException("Client non trouvé avec l'ID : " + panierDto.getClientId());
+                throw new EntityNotFoundException("Client non trouvé : " + panierDto.getClientId());
             }
 
             for (String productRef : panierDto.getProductRefs()) {
                 Optional<ProductEntity> productOpt = productDao.findByRef(productRef);
                 if (productOpt.isEmpty()) {
-                    throw new EntityNotFoundException("Produit non trouvé avec la référence : " + productRef);
+                    throw new EntityNotFoundException("Produit non trouvé: " + productRef);
                 }
             }
 
@@ -56,14 +54,13 @@ public class PanierService implements IPanierService {
         }
     }
 
-
     @Override
     public boolean updatePanier(PanierDto panierDto) {
         logger.info("Mise à jour du panier : {}", panierDto);
         try {
             Optional<ClientEntity> clientOpt = clientDao.findById(panierDto.getClientId());
             if (clientOpt.isEmpty()) {
-                throw new EntityNotFoundException("Client non trouvé avec l'ID : " + panierDto.getClientId());
+                throw new EntityNotFoundException("Client non trouvé: " + panierDto.getClientId());
             }
 
             PanierEntity panierEntity = PanierMapper.toPanierEntity(panierDto, clientOpt.get());

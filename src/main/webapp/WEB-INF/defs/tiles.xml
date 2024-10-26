@@ -62,5 +62,5 @@
         <put-attribute name="content" value="/WEB-INF/jsp/front/commandes.jsp"/>
     </definition>
 
-    <!-- DEFINITIONS URL NON SECURISES -->
+
 </tiles-definitions>
